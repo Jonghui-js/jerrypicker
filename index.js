@@ -23,7 +23,7 @@ const picker = async () => {
     console.log('실행');
     if (keyword1 && adList[i].includes(`${keyword1}`)) {
       await page.screenshot({
-        path: `./screenshot/${keyword1}.png`,
+        path: `./${keyword1}.png`,
         fullPage: true,
       });
       console.log(`${keyword1}.png가 저장되었습니다.`);
@@ -31,7 +31,7 @@ const picker = async () => {
       console.log(`keyword1의 현재 값은 ${keyword1}입니다.`);
     } else if (keyword2 && adList[i].includes(`${keyword2}`)) {
       await page.screenshot({
-        path: `./screenshot/${keyword2}.png`,
+        path: `./${keyword2}.png`,
         fullPage: true,
       });
       console.log(`${keyword2}.png가 저장되었습니다.`);
@@ -43,22 +43,14 @@ const picker = async () => {
   await browser.close();
 };
 
-/*
-const dodo = () => {
-  for (let j = 0; j < 3; j++) {
-    jerryPicker();
-  }
-  return;
-};
-dodo();
-*/
-
-const jerry = (picker, interval = 7000) => {
+const jerry = (picker, interval = 5000) => {
   setTimeout(() => {
+    console.log(`${interval / 1000}초 경과`);
     if (!keyword1 && !keyword2) return;
     picker();
     jerry(picker, interval);
   }, interval);
 };
 
-jerry(picker, 7000);
+console.log(`"${keyword1}"과 "${keyword2}"에 대한 배너광고를 크롤링합니다. `);
+jerry(picker);
