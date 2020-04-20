@@ -4,13 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "e": "electron ."
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonghui-js/jerrypicker.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jonghui-js/jerrypicker/issues"
+  },
+  "homepage": "https://github.com/Jonghui-js/jerrypicker#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "electron": "^8.2.0",
-    "puppeteer": "^2.1.1"
+    "puppeteer": "^3.0.0"
   }
 }
