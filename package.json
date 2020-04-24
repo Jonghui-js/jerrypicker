@@ -19,7 +19,16 @@
   },
   "homepage": "https://github.com/Jonghui-js/jerrypicker#readme",
   "dependencies": {
+    "boxen": "^4.2.0",
+    "chalk": "^4.0.0",
     "cheerio": "^1.0.0-rc.3",
-    "puppeteer": "^3.0.0"
+    "commander": "^5.0.0",
+    "inquirer": "^7.1.0",
+    "moment": "^2.24.0",
+    "puppeteer": "^3.0.0",
+    "yargs": "^15.3.1"
+  },
+  "bin": {
+    "jerrypicker": "./index.js"
   }
 }
