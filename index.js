@@ -1,12 +1,11 @@
 #!/usr/bin/env node
-
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 const chalk = require('chalk');
 const boxen = require('boxen');
-const program = require('commander');
 const inquirer = require('inquirer');
 const moment = require('moment');
+const mailer = require('./config/mailer');
 
 const greeting = chalk.greenBright.bold(
   '안녕하세요.\njerry picker는 배너광고 크롤러 CLI 프로그램으로서,\n특정 광고가 게재되었는지 일정 간격으로 확인해주고 캡쳐해줍니다.\n키워드 2가지와 원하는 간격을 입력해주세요.'
@@ -42,11 +41,19 @@ inquirer
         '3. 원하는 탐색 간격을 입력해주세요(10초 이상):'
       ),
     },
+    {
+      type: 'input',
+      name: 'emailAddress',
+      message: chalk.black.bgCyanBright(
+        '4. 이미지를 어디로 보낼까요? 이메일을 적어주세요:'
+      ),
+    },
   ])
   .then((answers) => {
     let keyword1 = answers.keyword1;
     let keyword2 = answers.keyword2;
     let interval = answers.interval * 1000;
+    let emailAddress = answers.emailAddress;
     let count = 1;
 
     console.log(
@@ -101,7 +108,7 @@ inquirer
       for (let i = 0; i < adList.length; i++) {
         if (keyword1 && adList[i].includes(`${keyword1}`)) {
           await page.screenshot({
-            path: `/Users/keren/Desktop/${keyword1}${moment().format(
+            path: `./${keyword1}${moment().format(
               'YYYY-MM-DD'
             )}-${moment().hours()}h-${moment().minutes()}m.png`,
             fullPage: true,
@@ -110,7 +117,7 @@ inquirer
           keyword1 = null;
         } else if (keyword2 && adList[i].includes(`${keyword2}`)) {
           await page.screenshot({
-            path: `/Users/keren/Desktop/${keyword2}${moment().format(
+            path: `./${keyword2}${moment().format(
               'YYYY-MM-DD'
             )}-${moment().hours()}h-${moment().minutes()}m.png`,
             fullPage: true,
@@ -119,6 +126,7 @@ inquirer
           keyword2 = null;
         }
       }
+
       count++;
       await browser.close();
     };

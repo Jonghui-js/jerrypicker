@@ -3,7 +3,7 @@
 ## 기술
 
 - puppeteer / cheerio
-- node.js
+- node.js / nodemailer
 
 ## 기능
 
@@ -19,8 +19,14 @@
 
 ⇒ 광고가 페이지의 어느 부분에 실리든지 상관없이 모든 페이지의 요소가 로드된 후 탐색을 실시합니다. 그리고 전체 화면을 캡쳐합니다.
 
-## 사진
+### 노드 모듈을 전역으로 설치
 
-<div>
-<img src="images/jerrypicker.gif" width="800px">
-</div>
+```jsx
+npm install -g
+```
+
+### 터미널에서 jerrypicker 실행
+
+```jsx
+$ jerrypicker
+```
