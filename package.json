@@ -26,7 +26,7 @@
     "config": "^3.3.1",
     "inquirer": "^7.1.0",
     "moment": "^2.24.0",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "nodemailer-smtp-pool": "^2.8.3",
     "puppeteer": "^3.0.0",
     "yargs": "^15.3.1"
